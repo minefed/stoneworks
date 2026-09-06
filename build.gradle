@@ -9,5 +9,7 @@ plugins {
 // Pin the Minecraft 1.20.4 build scripts, including their transitive imports.
 def minefedBuildScripts = "https://raw.githubusercontent.com/Fuzss/modresources/e6311c7c40cfb0fe4240f22fd80efbbe9c554585/gradle/v2/"
 def minefedMainScript = resources.text.fromUri("${minefedBuildScripts}main.gradle").asString()
+        .replace("rootProject.file(\"../LICENSE", "rootProject.file(\"LICENSE")
+        .replace("rootProject.file(\"../LICENSING.md\")", "rootProject.file(\"LICENSING.md\")")
 apply from: resources.text.fromString(minefedMainScript.replace(
         "https://raw.githubusercontent.com/Fuzss/modresources/main/gradle/v2/", minefedBuildScripts))
