@@ -8,6 +8,13 @@ pluginManagement {
     }
 }
 
-include("Common", "Fabric", "NeoForge", "Forge")
+// Omit unused Loom projects when building only one loader with configure-on-demand.
+def minefedLoaders = providers.gradleProperty("minefedLoaders")
+        .getOrElse("Fabric,NeoForge,Forge").split(",").collect { it.trim() }
+if (!minefedLoaders || minefedLoaders.any { !(it in ["Fabric", "NeoForge", "Forge"]) }) {
+    throw new GradleException("minefedLoaders must list Fabric, NeoForge or Forge, separated by commas")
+}
+include "Common"
+minefedLoaders.each { include it }
 
 apply from: "https://raw.githubusercontent.com/Fuzss/modresources/e6311c7c40cfb0fe4240f22fd80efbbe9c554585/gradle/v2/settings.gradle"
