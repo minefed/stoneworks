@@ -10,4 +10,4 @@ pluginManagement {
 
 include("Common", "Fabric", "NeoForge", "Forge")
 
-apply from: "https://raw.githubusercontent.com/Fuzss/modresources/main/gradle/v2/settings.gradle"
+apply from: "https://raw.githubusercontent.com/Fuzss/modresources/e6311c7c40cfb0fe4240f22fd80efbbe9c554585/gradle/v2/settings.gradle"
